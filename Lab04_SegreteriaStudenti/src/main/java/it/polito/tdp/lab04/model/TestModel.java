@@ -18,6 +18,9 @@ public class TestModel {
 			System.out.println(c.toString());
 		}*/
 		
+		Studente s = model.getMappaStudenti().get(146101);
+		System.out.println("COGNOME= " +s.getCognome()+" NOME= "+s.getNome());
+		
 
 	}
 

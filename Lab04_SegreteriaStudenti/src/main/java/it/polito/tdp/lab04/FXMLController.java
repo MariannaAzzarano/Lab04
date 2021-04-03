@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Model;
+import it.polito.tdp.lab04.model.Studente;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -65,6 +66,15 @@ public class FXMLController {
     	txtNome.setText("");
     	txtCognome.setText("");
     	txtArea.setText("");
+    }
+    
+    @FXML
+    void doCompleta(ActionEvent event) {
+    	Integer matr = Integer.parseInt(txtMatricola.getText());
+    	Studente stud = model.getMappaStudenti().get(matr);
+    	txtCognome.setText(stud.getCognome());
+    	txtNome.setText(stud.getNome());
+
     }
     
 
