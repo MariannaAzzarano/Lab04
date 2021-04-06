@@ -78,12 +78,7 @@ public class FXMLController {
     	txtNome.setText(stud.getNome());
     }
     
-    /**
-     * PROBLEMA : 
-     * Quando creo la lista 'studenti' tutti i suoi elementi sono a null.
-     * Ho provato nel TestModel ad usare lo stesso metodo con cui riempio la lista qui e lì funziona
-     * 
-     */
+
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
     	String nomeCorso = combo_corsi.getValue();
@@ -102,7 +97,7 @@ public class FXMLController {
     	
     	     System.out.print(String_textArea);
     	     if(studenti.size() == n) {
-    	    		System.out.print("Nessuno studente trovato");
+    	    		System.out.print("Nessuno studente trovato "+n);
     	    		txtArea.setText("Nessuno studente trovato");
     	    	}
     
