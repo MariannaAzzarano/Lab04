@@ -129,6 +129,35 @@ public class FXMLController {
     @FXML
     void doIscrivi(ActionEvent event) {
     	
+    	String matricola_s = txtMatricola.getText();
+    	Integer matricola = null;
+    	if(matricola_s.equals("")) {
+    		txtArea.setText("MATRICOLA NON INSERITA");
+    	}
+    	else {
+    		matricola = Integer.parseInt(matricola_s);
+    	}
+    	
+    	//String nomeCorso = combo_corsi.getValue();
+    	if(matricola !=null) {
+    		if(!model.studenteEsistente(matricola) ) {
+        		txtArea.setText("STUDENTE NON TROVATO");
+        	}
+        	else if(combo_corsi.getValue() == null) {
+        		txtArea.setText("CORSO NON INSERITO");
+        	}
+        	else {
+        		String nomeCorso = combo_corsi.getValue();
+        		if(model.studenteIscrittoalCorso(nomeCorso, matricola)) {
+        			txtArea.setText("Lo studente la cui matricola e': "+matricola+ " e' iscritto al corso: "+nomeCorso);
+        		}
+        		else {
+        			txtArea.setText("Lo studente la cui matricola e': "+matricola+ " NON e' iscritto al corso: "+nomeCorso);
+        		}
+        	}
+    	}
+    	
+    	
     	
 
     }

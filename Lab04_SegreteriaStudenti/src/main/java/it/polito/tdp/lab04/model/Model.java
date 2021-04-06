@@ -100,5 +100,15 @@ public class Model {
 		}
 		return false;
 	}
+	
+	public boolean studenteIscrittoalCorso(String nomeCorso, Integer matricola) {
+		List <Corso> listaCorsiStudente = this.getListaCorsiDelloStudente(matricola);
+		for(Corso cc : listaCorsiStudente) {
+			if(nomeCorso.equals(cc.getNome())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
