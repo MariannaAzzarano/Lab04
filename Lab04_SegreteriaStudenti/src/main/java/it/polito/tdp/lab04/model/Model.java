@@ -17,6 +17,7 @@ public class Model {
 	private List<Corso> listaCorsi = new LinkedList<Corso>();
 	private List<String> listaNomiCorsi = new LinkedList<String>();
 	private Map<Integer, Studente> mappaStudenti = new LinkedHashMap<Integer, Studente>();
+	private Map<String, Corso> mappaCorsi = new LinkedHashMap<String, Corso>();
 	
 	
 	public Model() {
@@ -34,6 +35,15 @@ public class Model {
 			listaCorsi.add(new Corso("",0,"",0));
 		}
 		return listaCorsi;
+	}
+	
+	public Map<String, Corso> getMappaCorsi(){
+		if(mappaCorsi.size() == 0) {
+			for(Corso cc : corso.getTuttiICorsi()) {
+				mappaCorsi.put(cc.getCodice(), cc);
+			}
+		}
+		return mappaCorsi;
 	}
 	
 	
@@ -70,6 +80,25 @@ public class Model {
 			listaStudentiDelCorso.add(this.getMappaStudenti().get(m));
 		}
 		return listaStudentiDelCorso;
+	}
+	
+	public List<Corso> getListaCorsiDelloStudente(Integer matricola){
+		List<Corso> listaCorsiStudente = new LinkedList<Corso>();
+		//List<Corso> listaCorsi = this.getListaCorsi();
+		for(String codice : corso.getCorsiIscrittoStudente(matricola)) {
+			Corso cc = this.getMappaCorsi().get(codice);
+			listaCorsiStudente.add(cc);
+		}
+		
+		
+		return listaCorsiStudente;
+	}
+	
+	public boolean studenteEsistente(Integer matricola) {
+		if(this.getMappaStudenti().containsKey(matricola)) {
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import it.polito.tdp.lab04.model.Corso;
+import it.polito.tdp.lab04.model.Model;
 import it.polito.tdp.lab04.model.Studente;
 
 public class CorsoDAO {
@@ -57,7 +58,7 @@ public class CorsoDAO {
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
 	public void getCorso(Corso corso) {
-		// TODO
+		// TODO	
 	}
 
 	/*
@@ -74,6 +75,37 @@ public class CorsoDAO {
 		// TODO
 		// ritorna true se l'iscrizione e' avvenuta con successo
 		return false;
+	}
+	
+	
+	public List<String> getCorsiIscrittoStudente(Integer matricola){
+		String sql = "SELECT codins "
+				+ "FROM iscrizione "
+				+ "WHERE matricola = ? ";
+		
+		List<String> listaCodiciCorsi = new LinkedList<String>();
+		try {
+			Connection conn = ConnectDB.getConnection();
+			String matricolaScelta = ""+matricola;
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setString(1, matricolaScelta);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				String codiceCorso = rs.getString("codins");
+				listaCodiciCorsi.add(codiceCorso);
+			}
+			
+			conn.close();
+			return listaCodiciCorsi;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException("Errore in 'getCorsiIscrittoStudente'", e);
+		}
+		
+		
+		
+		
 	}
 
 }

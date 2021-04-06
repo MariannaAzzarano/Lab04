@@ -104,6 +104,35 @@ public class FXMLController {
 
     }
     
+    
+    @FXML
+    void doCercaCorsi(ActionEvent event) {
+    	Integer matricola = Integer.parseInt(txtMatricola.getText());
+    	if(model.studenteEsistente(matricola)) {
+    		List<Corso> corsi = model.getListaCorsiDelloStudente(matricola);
+    		if(corsi.size() == 0) {
+    			txtArea.setText("STUDENTE NON ISCRITTO A NESSUN CORSO");
+    		}
+    		String string_txtarea = "";
+    		for(Corso cc : corsi) {
+    			string_txtarea += cc.toString() + "\n";
+    		}
+    		txtArea.setText(string_txtarea);
+    	}
+    	else {
+    		txtArea.setText("STUDENTE NON TROVATO");
+    	}
+
+    }
+    
+    
+    @FXML
+    void doIscrivi(ActionEvent event) {
+    	
+    	
+
+    }
+    
 
     @FXML
     void initialize() {

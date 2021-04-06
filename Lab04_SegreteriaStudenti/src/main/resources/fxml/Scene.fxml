@@ -80,11 +80,11 @@
             </HBox>
             <HBox prefHeight="31.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnCercaCorso" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Cerca Corsi">
+                  <Button fx:id="btnCercaCorso" mnemonicParsing="false" onAction="#doCercaCorsi" prefHeight="26.0" prefWidth="128.0" text="Cerca Corsi">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="btnIscrivi" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Iscrivi">
+                  <Button fx:id="btnIscrivi" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#doIscrivi" prefHeight="26.0" prefWidth="108.0" text="Iscrivi">
                      <HBox.margin>
                         <Insets bottom="5.0" left="300.0" right="5.0" top="5.0" />
                      </HBox.margin></Button>
