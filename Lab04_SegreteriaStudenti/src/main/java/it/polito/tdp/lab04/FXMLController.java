@@ -6,6 +6,7 @@ package it.polito.tdp.lab04;
 
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.lab04.model.Corso;
@@ -17,6 +18,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import java.util.LinkedList;
 
 public class FXMLController {
 	
@@ -74,6 +76,37 @@ public class FXMLController {
     	Studente stud = model.getMappaStudenti().get(matr);
     	txtCognome.setText(stud.getCognome());
     	txtNome.setText(stud.getNome());
+    }
+    
+    /**
+     * PROBLEMA : 
+     * Quando creo la lista 'studenti' tutti i suoi elementi sono a null.
+     * Ho provato nel TestModel ad usare lo stesso metodo con cui riempio la lista qui e lì funziona
+     * 
+     */
+    @FXML
+    void doCercaIscrittiCorso(ActionEvent event) {
+    	String nomeCorso = combo_corsi.getValue();
+    	List <Studente> studenti = new LinkedList <Studente>();
+    	studenti = model.getListaStudentiDelCorso(nomeCorso);
+    	
+    	int n = 0;       //la uso per contare il numero di elementi della lista che sono a null
+    	String String_textArea = "";
+    	         for(Studente s : studenti) {
+    		          if(s != null) {
+    		                String_textArea += s.toString()+ "\n";
+    		          }else {
+    		        	  n++;
+    		          }
+    	              }
+    	     txtArea.setText(String_textArea);
+    	
+    	     System.out.print(String_textArea);
+    	     if(studenti.size() == n) {
+    	    		System.out.print("Nessuno studente trovato");
+    	    		txtArea.setText("Nessuno studente trovato");
+    	    	}
+    
 
     }
     

@@ -18,6 +18,7 @@ public class StudenteDAO {
 		String sql = "SELECT * FROM studente";
 		Map <Integer,Studente> mappaStudenti = new LinkedHashMap<Integer, Studente>();
 		
+		
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
@@ -38,6 +39,35 @@ public class StudenteDAO {
 			
 		} catch(SQLException e) {
 			throw new RuntimeException("Errore in 'getTuttiStudenti'", e);
+		}
+		
+	}
+	
+	
+	public List<Integer> getStudentiDelCorso(String codiceCorso){
+		String sql = "SELECT matricola "
+				+ "FROM iscrizione "
+				+ "WHERE codins = ? ";
+		
+		List <Integer> listaMatricoleDelCorso = new LinkedList<Integer>();
+		try {
+			Connection conn = ConnectDB.getConnection();
+			String codiceCorsoScelto = codiceCorso;
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setString(1, codiceCorsoScelto);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				Integer matricola = rs.getInt("matricola");
+				
+				//String cds = rs.getString("codins");
+				listaMatricoleDelCorso.add(matricola);
+			}
+			conn.close();
+			return listaMatricoleDelCorso;
+			
+		}catch(SQLException e) {
+			throw new RuntimeException("Errore in 'getStudentiDelCorso'", e);
 		}
 		
 	}

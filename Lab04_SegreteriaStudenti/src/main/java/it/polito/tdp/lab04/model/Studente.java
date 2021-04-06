@@ -55,6 +55,8 @@ public class Studente {
 	public void setCds(String cds) {
 		this.cds = cds;
 	}
+	
+	
 
 
 	@Override

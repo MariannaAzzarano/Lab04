@@ -39,7 +39,7 @@
             </HBox>
             <HBox prefHeight="38.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="btnCercaIscritti" mnemonicParsing="false" text="Cerca iscritti corso">
+                  <Button fx:id="btnCercaIscritti" mnemonicParsing="false" onAction="#doCercaIscrittiCorso" text="Cerca iscritti corso">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>

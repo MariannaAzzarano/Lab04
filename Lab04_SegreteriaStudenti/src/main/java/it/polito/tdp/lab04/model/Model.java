@@ -18,6 +18,7 @@ public class Model {
 	private List<String> listaNomiCorsi = new LinkedList<String>();
 	private Map<Integer, Studente> mappaStudenti = new LinkedHashMap<Integer, Studente>();
 	
+	
 	public Model() {
 		corso = new CorsoDAO();
 		studente = new StudenteDAO();
@@ -52,6 +53,36 @@ public class Model {
 			}
 		}
 		return mappaStudenti;
+	}
+	
+	public List<Studente> getListaStudentiDelCorso(String nomeCorso){
+		List <Studente> listaStudentiDelCorso = new LinkedList<Studente>();
+		List <Integer> listaMatricole = new LinkedList <Integer>();
+		String codiceCorso = "";
+		for(Corso cors : this.getListaCorsi()) {
+			if(nomeCorso.equals(cors.getNome())) {
+				codiceCorso = cors.getCodice();
+				//break;
+			}
+		}
+		//prima di fare questo devo trovare il codice del corso avendo il nome 
+		listaMatricole = studente.getStudentiDelCorso(codiceCorso);
+		for(Integer m : listaMatricole) {
+			listaStudentiDelCorso.add(mappaStudenti.get(m));
+		}
+		return listaStudentiDelCorso;
+		//Map<Integer, Studente> studentiCorso = new LinkedHashMap<Integer,Studente>();
+		//String codiceCorso = cc.getCodice();
+		
+		//listaMatricole = studente.getStudentiDelCorso(codiceCorso);
+		/*Corso corsoScelto;
+		for(Corso c : this.getListaCorsi()) {
+			if(c.restituisciCorso(nomeCorso) != null) {
+				corsoScelto = c.restituisciCorso(nomeCorso);
+			}
+		}*/
+		
+		
 	}
 
 }

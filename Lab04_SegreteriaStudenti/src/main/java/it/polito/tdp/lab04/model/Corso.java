@@ -46,6 +46,13 @@ public class Corso {
 	public void setSemestre(int semestre) {
 		this.semestre = semestre;
 	}
+	
+	/*public Corso restituisciCorso(String nome) {
+		if(this.getNome().equals(nome)) {
+			return this;
+		}
+		return null;
+	}*/
 
 	@Override
 	public String toString() {
