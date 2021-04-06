@@ -87,8 +87,7 @@ public class FXMLController {
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
     	String nomeCorso = combo_corsi.getValue();
-    	List <Studente> studenti = new LinkedList <Studente>();
-    	studenti = model.getListaStudentiDelCorso(nomeCorso);
+    	List <Studente> studenti = model.getListaStudentiDelCorso(nomeCorso); 
     	
     	int n = 0;       //la uso per contare il numero di elementi della lista che sono a null
     	String String_textArea = "";
